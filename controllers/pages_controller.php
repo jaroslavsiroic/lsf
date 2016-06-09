@@ -4,6 +4,10 @@
       require_once('views/pages/home.php');
     }
 
+    public function myprofile() {
+      require_once('views/pages/myprofile.php');
+    }
+    
     public function error() {
       require_once('views/pages/error.php');
     }

@@ -66,8 +66,7 @@
             </div>
           <?php } else { ?>
             <ul class="nav navbar-nav">
-              <li><a href="#">My Posts</a></li>
-              <li><a href="#">My profile</a></li>
+              <li><a href="?controller=pages&action=myprofile">My profile</a></li>
               <li><a href="#">Contact Developer</a></li>
               <li><a href="#">View all users</a></li>
               <li><a href="#">About</a></li>

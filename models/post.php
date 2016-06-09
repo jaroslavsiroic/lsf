@@ -32,6 +32,19 @@
       return $list;
     }
 
+    public static function allById($id) {
+      $list = [];
+      $id = intval($id);
+      $db = Db::getInstance();
+      $req = $db->query('SELECT * FROM post WHERE id_user = '.$id);
+      $req->execute(array('id' => $id));
+      // we create a list of Post objects from the database results
+      foreach($req->fetchAll() as $post) {
+        $list[] = new Post($post['id'], $post['date'], $post['title'], $post['headline'], 0, 0, 1);
+      }
+      return $list;
+    }
+
     public static function find($id) {
       $db = Db::getInstance();
       // we make sure $id is an integer
