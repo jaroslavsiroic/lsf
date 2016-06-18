@@ -1,7 +1,5 @@
 <?php
   class Post {
-    // we define 3 attributes
-    // they are public so that we can access them using $post->author directly
     public $id;
     public $date;
     public $title;
@@ -23,11 +21,12 @@
     public static function all() {
       $list = [];
       $db = Db::getInstance();
-      $req = $db->query('SELECT p.id as id, p.date as date, p.title as title, p.headline as headline, u.id as id_user, u.name as name, u.surname as surname FROM post p inner join user u where u.id = p.id_user');
+      require_once('models/category.php');
+      $req = $db->query('SELECT p.id as id, p.date as date, p.title as title, p.headline as headline, u.id as id_user, u.name as name, u.surname as surname, c.id as cat_id, c.title as cat_title FROM post p inner join user u inner join category c where u.id = p.id_user and p.id_category = c.id');
 
       // we create a list of Post objects from the database results
       foreach($req->fetchAll() as $post) {
-        $list[] = new Post($post['id'], $post['date'], $post['title'], $post['headline'], 0, new User($post['id_user'], 0, $post['name'], $post['surname']), 1);
+        $list[] = new Post($post['id'], $post['date'], $post['title'], $post['headline'], 0, new User($post['id_user'], 0, $post['name'], $post['surname']), new Category($post['cat_id'],$post['cat_title'],0));
       }
       return $list;
     }
@@ -69,7 +68,7 @@
         $result = $db->prepare('INSERT INTO post(title, headline, content, date, id_user, id_category) VALUES (:title , :headline , :content , :date, :user, :cat)');
         $result->execute(array('title' => $title, 'headline' => $headline, 'content' => $content, 'date' => $date, 'user' => $_SESSION['user']->id, 'cat' => $category));
       } catch(PDOException $e) {
-          echo '<p class="error">Error saveing post!</p>'. $e;
+          echo '<p class="error">Error saving post!</p>'. $e;
       }
     }
   }
