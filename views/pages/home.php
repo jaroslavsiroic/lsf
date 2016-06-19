@@ -53,25 +53,9 @@
     <div class="well">
         <h4>Blog Categories</h4>
         <div class="row">
-            <div class="col-lg-6">
-<table>
-
-<?php
-
-$con = mysqli_connect("localhost", "root", "", "jdm") or die ("Error Connection");
-
-$query = "select * from category";
-
-$result = mysqli_query($con,$query);
-
-while ($row = mysqli_fetch_array($result)) {
-  echo "<tr><td>".$row["title"]."</td><td>";
-}
-
-?>
-
-
-</table>
+<div class="col-lg-6">
+<?php require_once('views/pages/category.php'); ?>
+                
 
             </div>
         </div>

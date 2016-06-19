@@ -28,5 +28,9 @@
     public function ok() {
       require_once('views/pages/ok.php');
     }
+
+        public function category() {
+      require_once('views/pages/category.php');
+    }
   }
 ?>
