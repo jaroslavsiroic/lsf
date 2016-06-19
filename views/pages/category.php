@@ -1,7 +1,6 @@
 <?php
 	if(!$_SESSION['user']->isLoggedIn() ){ header('Location: ./'); } 
 ?>
-<p>hello</p>
 
 <?php
 require_once('models/category.php');
