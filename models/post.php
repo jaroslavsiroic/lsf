@@ -31,7 +31,7 @@
       return $list;
     }
 
-    public static function allById($id) {
+    public static function allById($id) { // all user posts
       $list = [];
       $id = intval($id);
       $db = Db::getInstance();
@@ -70,6 +70,23 @@
       } catch(PDOException $e) {
           echo '<p class="error">Error saving post!</p>'. $e;
       }
+    }
+    public static function edit($id, $title, $headline, $content, $category) {
+      $db = Db::getInstance();
+
+      $id = intval($id);
+      $req = $db->prepare('UPDATE post SET content=:content, title=:title, headline=:headline, category=:category WHERE id =:id');
+
+      $req->execute(array('id' => $id, 'content' => $content, 'title' => $title, 'headline' => $headline, 'category' => $category));
+    }
+
+    public static function delete($id) {
+      $db = Db::getInstance();
+
+      $id = intval($id);
+      $req = $db->prepare('DELETE FROM post WHERE id = :id');
+
+      $req->execute(array('id' => $id));
     }
   }
 ?>

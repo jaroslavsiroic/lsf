@@ -47,19 +47,19 @@ function validateNick(field){
 	if (field == "") return "No Username was entered.<br/>";
 	else if (field.length < 3)
 	return "Username must be at least 3 characters.<br/>";
-	else if (/[^a-zA-Z0-9_-]/.test(field))
-	return "Only a-z, A-Z, 0-9, - and _ allowed in Username.<br/>";
+	else if (/[^a-zA-Z0-9_-ĄČĘĖĮŠŲŪŽąčęėįšųūž]/.test(field))
+	return "Only a-z, A-Z, 0-9, -, ĄČĘĖĮŠŲŪŽąčęėįšųūž and _ allowed in Username.<br/>";
 	return "";
 }
 function validateName(field){
 	if (field == "") return "No Name was entered.<br/>";
-	else if (/[^a-zA-Z0-9_-]/.test(field))
-	return "Only a-z, A-Z, 0-9, - and _ allowed in Name.<br/>";
+	else if (/[^a-zA-Z0-9_-ĄČĘĖĮŠŲŪŽąčęėįšųūž]/.test(field))
+	return "Only a-z, A-Z, 0-9, -, ĄČĘĖĮŠŲŪŽąčęėįšųūž and _ allowed in Name.<br/>";
 	return "";
 }
 function validateSurname(field){
 	if (field == "") return "No Surname was entered.<br/>";
-	else if (/[^a-zA-Z0-9_-]/.test(field))
+	else if (/[^a-zA-Z0-9_-ĄČĘĖĮŠŲŪŽąčęėįšųūž]/.test(field))
 	return "Only a-z, A-Z, 0-9, - and _ allowed in Surname.<br/>";
 	return "";
 }
