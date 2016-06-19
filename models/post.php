@@ -46,6 +46,7 @@
 
     public static function find($id) {
       $db = Db::getInstance();
+      require_once('models/category.php');
       // we make sure $id is an integer
       $id = intval($id);
       $req = $db->prepare('SELECT p.id as id, p.date as date, p.title as title, p.headline as headline, p.content as content, u.id as id_user, u.name as name, u.username as username, u.surname as surname, c.id as cat_id, c.title as cat_title FROM post p inner join user u inner join category c where u.id = p.id_user and p.id_category = c.id and p.id = :id');
@@ -75,7 +76,7 @@
       $db = Db::getInstance();
 
       $id = intval($id);
-      $req = $db->prepare('UPDATE post SET content=:content, title=:title, headline=:headline, category=:category WHERE id =:id');
+      $req = $db->prepare('UPDATE post SET content=:content, title=:title, headline=:headline, id_category=:category WHERE id =:id');
 
       $req->execute(array('id' => $id, 'content' => $content, 'title' => $title, 'headline' => $headline, 'category' => $category));
     }

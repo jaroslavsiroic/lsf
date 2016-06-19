@@ -3,6 +3,11 @@ if (!$_SESSION['user']->isLoggedIn()) {
     require_once('views/pages/error.php');
     exit();
 }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //$_SESSION['user']->register($_POST['nick'], $_POST['name'], $_POST['surname'], $_POST['pass']);
+    Post::edit($_POST['id'], $_POST['title'], $_POST['headline'], $_POST['content'], $_POST['category']);
+    header('Location: ?controller=pages&action=myprofile');
+}
 ?>
 <script>
     tinymce.init({
@@ -51,10 +56,4 @@ if (!$_SESSION['user']->isLoggedIn()) {
         </form>
     </div>
     <p class="error" id="fail"></p>
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        //$_SESSION['user']->register($_POST['nick'], $_POST['name'], $_POST['surname'], $_POST['pass']);
-        Post::savePost($_POST['title'], $_POST['headline'], $_POST['content'], $_POST['category']);
-    }
-    ?>
 </div>
