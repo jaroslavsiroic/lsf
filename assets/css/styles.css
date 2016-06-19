@@ -93,3 +93,7 @@ p {
 	color: red;
 }
 
+.col-lg-8 {
+	word-wrap: break-word;
+	max-width: 750px;
+}
