@@ -53,8 +53,12 @@
     <div class="well">
         <h4>Blog Categories</h4>
         <div class="row">
-<div class="col-lg-6">
-<?php require_once('views/pages/category.php'); ?>
+            <div class="col-lg-6">
+                <?php foreach($category as $cat) { ?>
+                    <a href="?controller=pages&action=category&id=<?php echo $cat->id; ?>" >
+                        <h3 class="media-heading"> <?php echo $cat->title;  ?> </h3>
+                    </a>
+                <?php } ?>
                 
 
             </div>

@@ -1,6 +1,8 @@
 <?php
   class PagesController {
     public function home() {
+      require_once('models/category.php');
+      $category = Category::all();
       require_once('views/pages/home.php');
     }
 
@@ -29,7 +31,15 @@
       require_once('views/pages/ok.php');
     }
 
-        public function category() {
+    public function category() {
+      if (!isset($_GET['id']))
+        return call('pages', 'error');
+      require_once('models/category.php');
+      $category = Category::all();
+      //$cat = Category::find($_GET['id']);
+      //masz stworzyc metode find w klasie Category :)
+      //i uzhywac ten $cat jako objekt kategorii, wyswietlac opis, nazwe, oraz posty z tej kategorii
+      //posty zrobim pozniej. Poprobuj puki co tylko to zrobic
       require_once('views/pages/category.php');
     }
   }
