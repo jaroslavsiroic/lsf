@@ -10,7 +10,7 @@
 require_once('models/post.php');
 $posts = Post::allById($_SESSION['user']->id); 
 foreach($posts as $post) { ?>
-<div class="media">
+<div class="media well">
     <div class="media-body">
         <a href="?controller=posts&action=show&id=<?php echo $post->id; ?>" >
             <h3 class="media-heading"> <?php echo $post->title;  ?> </h3>
@@ -21,6 +21,8 @@ foreach($posts as $post) { ?>
             </small>
         </h4>
         <p class="lead"><?php echo $post->headline; ?></p>
+        <a href="?controller=posts&action=edit&id=<?php echo $post->id; ?>" type="button" class="btn btn-success">Edit</a>
+        <a href="?controller=posts&action=delete&id=<?php echo $post->id; ?>" type="button" class="btn btn-danger">Delete</a>
     </div>
 </div>
 <?php } ?>

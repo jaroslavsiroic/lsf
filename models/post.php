@@ -48,11 +48,11 @@
       $db = Db::getInstance();
       // we make sure $id is an integer
       $id = intval($id);
-      $req = $db->prepare('SELECT * FROM post inner join user WHERE post.id = :id and post.id_user = user.id');
+      $req = $db->prepare('SELECT p.id as id, p.date as date, p.title as title, p.headline as headline, p.content as content, u.id as id_user, u.name as name, u.username as username, u.surname as surname, c.id as cat_id, c.title as cat_title FROM post p inner join user u inner join category c where u.id = p.id_user and p.id_category = c.id and p.id = :id');
       // the query was prepared, now we replace :id with our actual $id value
       $req->execute(array('id' => $id));
       $post = $req->fetch();
-      return new Post($post['id'], $post['date'], $post['title'], $post['headline'], $post['content'], new User($post['id_user'], $post['username'], $post['name'], $post['surname']), 1);
+      return new Post($post['id'], $post['date'], $post['title'], $post['headline'], $post['content'], new User($post['id_user'], $post['username'], $post['name'], $post['surname']), new Category($post['cat_id'],$post['cat_title'],0));
     }
 
     public static function savePost($title, $headline, $content, $category) {

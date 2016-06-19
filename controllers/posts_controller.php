@@ -23,5 +23,24 @@
       $cats = Category::all();
       require_once('views/posts/write.php');
     }
+
+    public function edit() {
+      if (!isset($_GET['id']))
+        return call('pages', 'error');
+      require_once('models/category.php');
+      $cats = Category::all();
+      $post = Post::find($_GET['id']);
+      if ($post->author->id == $_SESSION['user']->id)
+        require_once('views/posts/edit.php');
+      else return call('pages', 'error');
+    }
+
+    public function delete() {
+      if (!isset($_GET['id']))
+        return call('pages', 'error');
+      require_once('models/post.php');
+      Post::delete($_GET['id']);
+      header('Location: ?controller=pages&action=myprofile');
+    }
   }
 ?>
