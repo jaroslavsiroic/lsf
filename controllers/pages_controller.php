@@ -1,8 +1,6 @@
 <?php
   class PagesController {
     public function home() {
-      require_once('models/category.php');
-      $category = Category::all();
       require_once('views/pages/home.php');
     }
 

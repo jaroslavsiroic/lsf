@@ -1,10 +1,16 @@
 <?php
 	if(!$_SESSION['user']->isLoggedIn() ){ header('Location: ./'); } 
 ?>
-<h3>My profile</h3>
-<h4><?php echo $_SESSION['user']->name.' '.$_SESSION['user']->surname; ?></h4>
-<h4>Username: <?php echo $_SESSION['user']->username; ?></h4>
-
+<div class="col-lg-8">
+<h1>My profile</h1>
+<h3>Username: <?php echo $_SESSION['user']->username; ?></h3>
+<h3>Name: <?php echo $_SESSION['user']->name ?></h3>
+<h3>Surname: <?php echo $_SESSION['user']->surname ?></h3>
+<ul class="list-inline">
+    <li><a style="margin-top: 10px" href="?controller=posts&action=edit" type="button" class="btn btn-success">Change Name</a></li>
+    <li><a style="margin-top: 10px" href="?controller=posts&action=edit" type="button" class="btn btn-success">Change Surname</a></li>
+    <li><a style="margin-top: 10px" href="?controller=posts&action=edit" type="button" class="btn btn-success">Change Password</a></li>
+</ul>
 <hr><h3>My posts</h3>
 <?php
 require_once('models/post.php');
@@ -26,3 +32,6 @@ foreach($posts as $post) { ?>
     </div>
 </div>
 <?php } ?>
+</div>
+<!-- Blog Sidebar Widgets Column -->
+<?php require_once('views/widgets.php'); ?>
