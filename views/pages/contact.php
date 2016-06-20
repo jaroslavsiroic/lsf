@@ -6,7 +6,7 @@
     <section id="primary">
         <h3>General Information</h3>
         <p>I'm not currently looking for new design work, but I am availabe for speaking gigs and similar engagements. If you have any questions, please dont't hesitate to contact me!</p>
-        <p>Please only use phone contact for urgent inquiries. Otherwise, Facebook, email are the best way to reach me.</p>
+        <p>Please only use phone contact for urgent inquiries. Otherwise, Facebook, email are the best way to reach me.</p> <br>
     </section>
        <section id="secondary">
             <h3>Contact Details</h3>
