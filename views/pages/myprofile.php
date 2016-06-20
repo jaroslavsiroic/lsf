@@ -8,7 +8,7 @@
 <hr><h3>My posts</h3>
 <?php
 require_once('models/post.php');
-$posts = Post::allById($_SESSION['user']->id); 
+$posts = Post::allById($_SESSION['user']->id);
 foreach($posts as $post) { ?>
 <div class="media well">
     <div class="media-body">

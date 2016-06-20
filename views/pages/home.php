@@ -14,8 +14,7 @@
     ?>
     <div class="media">
         <a class="pull-left" href="#">
-            <img style="max-width: 64px; max-height: 64px" class="media-object" src="assets/img/user256.png" alt="
-            ">
+            <img style="max-width: 64px; max-height: 64px" class="media-object" src="assets/img/user256.png" alt="">
         </a>
         <div class="media-body">
             <a href="?controller=posts&action=show&id=<?php echo $post->id; ?>" >
@@ -37,7 +36,7 @@
     <img src="http://www.technologijos.lt/upload/image/n/pranesimai_spaudai/S-30037/2-1-lietuvos_studentu_forumas.png">
     <!-- Blog Search Well -->
     <div class="well">
-        <h4>Blog Search</h4>
+        <h4>Forum Search</h4>
         <div class="input-group">
             <input type="text" class="form-control">
             <span class="input-group-btn">
@@ -51,15 +50,15 @@
 
     <!-- Blog Categories Well -->
     <div class="well">
-        <h4>Blog Categories</h4>
+        <h4>Forum Categories</h4>
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <?php foreach($category as $cat) { ?>
-                    <a href="?controller=pages&action=category&id=<?php echo $cat->id; ?>" >
-                        <h3 class="media-heading"> <?php echo $cat->title;  ?> </h3>
+                    <a style="display: inline-block" href="?controller=pages&action=category&id=<?php echo $cat->id; ?>" >
+                        <h4 class="media-heading"> <?php echo $cat->title;  ?> </h4>
                     </a>
                 <?php } ?>
-                
+
 
             </div>
         </div>
