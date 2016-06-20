@@ -23,24 +23,6 @@
 			return $list;
 	    }
 
-<<<<<<< HEAD
-	    public static function find($id) {
-	    $db = Db::getInstance();
-      	require_once('models/category.php');
-     	// we make sure $id is an integer
-     	$id = intval($id);
-     	$req = $db->prepare('SELECT * FROM category WHERE id = :id');
-
-     	
-			foreach($req->fetchAll() as $cat) {
-				$list[] = new Category($cat['id'], $cat['title'], $cat['content']);
-			}
-
-			return $list;
-	    }
-
-
-=======
 		public static function find($id) {
 			$db = Db::getInstance();
 			// we make sure $id is an integer
@@ -51,6 +33,5 @@
 			$post = $req->fetch();
 			return new Category($post['id'],$post['title'],$post['content']);
 		}
->>>>>>> 22ad8f42300b37e6a6d021e800c7f1723ca968f6
 	}
 ?>
