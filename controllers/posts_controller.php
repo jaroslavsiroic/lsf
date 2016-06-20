@@ -37,7 +37,7 @@
     }
 
     public function delete() {
-      if (!isset($_GET['id']))
+      if (!isset($_GET['id']) || !isset($_GET['postid']))
         return call('pages', 'error');
       require_once('models/post.php');
       Post::delete($_GET['id']);
@@ -49,14 +49,15 @@
         return call('pages', 'error');
       require_once('models/comment.php');
       Comment::delete($_GET['id']);
-      header('Location: ./');
+      header('Location: ?controller=posts&action=show&id='.$_GET['postid']);
     }
 
     public function updatecomment() {
-      if (!isset($_GET['id']))
+      if (!isset($_GET['id']) || !isset($_GET['postid']))
         return call('pages', 'error');
       require_once('models/comment.php');
-      //Comment::update($_GET['id']);
+      $com = Comment::find($_GET['id']);
+      require_once('views/posts/updateComment.php');
     }
   }
 ?>

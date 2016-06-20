@@ -65,7 +65,7 @@
 			// the query was prepared, now we replace :id with our actual $id value
 			$req->execute(array('id' => $id));
 			$post = $req->fetch();
-			return new Comment($post['id'],$post['content'],$post['date'],$post['user']);
+			return new Comment($post['id'],$post['content'],$post['date'],$post['id_user']);
 		}
 	}
 ?>

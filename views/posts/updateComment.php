@@ -2,6 +2,7 @@
 if (!$_SESSION['user']->isLoggedIn()) header('Location: ./');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     Comment::update($_POST['id'],$_POST['content']);
+    header('Location: ?controller=posts&action=show&id='.$_POST['postid']);
 }
 ?>
 <script>
@@ -24,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <textarea name="content" id="content" style="max-width: 100%" class="form-control" rows="3"><?php echo $com->content; ?></textarea>
     </div>
     <input type="hidden" name="id" value="<?php echo $com->id; ?>">
+    <input type="hidden" name="postid" value="<?php echo $_GET['postid']; ?>">
     <input type="Submit" class="btn btn-primary" value="Submit">
 </form>
 <p class="error" id="fail"></p>
