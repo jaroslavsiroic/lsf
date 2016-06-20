@@ -43,5 +43,20 @@
       Post::delete($_GET['id']);
       header('Location: ?controller=pages&action=myprofile');
     }
+
+    public function deletecomment() {
+      if (!isset($_GET['id']))
+        return call('pages', 'error');
+      require_once('models/comment.php');
+      Comment::delete($_GET['id']);
+      header('Location: ./');
+    }
+
+    public function updatecomment() {
+      if (!isset($_GET['id']))
+        return call('pages', 'error');
+      require_once('models/comment.php');
+      //Comment::update($_GET['id']);
+    }
   }
 ?>

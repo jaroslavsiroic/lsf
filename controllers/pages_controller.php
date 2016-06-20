@@ -40,7 +40,10 @@
         return call('pages', 'error');
       require_once('models/category.php');
       $category = Category::all();
+      require_once('models/post.php');
       $cat = Category::find($_GET['id']);
+      $posts = Post::allByCategory($_GET['id']);
+      usort($posts, "cmp_post_date");
       require_once('views/pages/category.php');
     }
     
