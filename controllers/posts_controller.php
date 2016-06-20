@@ -48,7 +48,11 @@
       if (!isset($_GET['id']))
         return call('pages', 'error');
       require_once('models/comment.php');
-      Comment::delete($_GET['id']);
+      $com = Comment::find($_GET['id']);
+      if ($_SESSION['user']->id == $com->user->id)
+        Comment::delete($_GET['id']);
+      else return call('pages', 'error');
+
       header('Location: ?controller=posts&action=show&id='.$_GET['postid']);
     }
 
@@ -57,7 +61,9 @@
         return call('pages', 'error');
       require_once('models/comment.php');
       $com = Comment::find($_GET['id']);
-      require_once('views/posts/updateComment.php');
+      if ($_SESSION['user']->id == $com->user)
+        require_once('views/posts/updateComment.php');
+      else return call('pages', 'error');
     }
   }
 ?>

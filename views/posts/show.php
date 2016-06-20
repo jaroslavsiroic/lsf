@@ -8,7 +8,7 @@
 
     <!-- Author -->
     <p class="lead">
-        by <a href="#"><?php echo $post->author->name.' '.$post->author->surname; ?></a>
+        by <a href="?controller=pages&action=userprofile&id=<?php echo $post->author->id; ?>"><?php echo $post->author->name.' '.$post->author->surname; ?></a>
     </p>
 
     <hr>
@@ -76,11 +76,11 @@
             <h4 class="media-heading"> <?php echo $com->user->name.' '.$com->user->surname; ?>
                 <small><?php echo $com->date; ?></small>
             </h4>
-            
+
             <?php echo $com->content; if ($_SESSION['user']->id == $com->user->id){?>
                 <a href="?controller=posts&action=updatecomment&id=<?php echo $com->id; ?>&postid=<?php echo $post->id; ?>" type="button" class="btn btn-success">Edit</a>
-            <?php } if ($_SESSION['user']->id == $com->user || $_SESSION['user']->id == $post->author->id){?>
-            <a href="?controller=posts&action=deletecomment&id=<?php echo $com->id; ?>&postid=<?php echo $post->id; ?>" type="button" class="btn btn-danger">Delete</a>
+            <?php } if ($_SESSION['user']->id == $com->user->id || $_SESSION['user']->id == $post->author->id){?>
+                <a href="?controller=posts&action=deletecomment&id=<?php echo $com->id; ?>&postid=<?php echo $post->id; ?>" type="button" class="btn btn-danger">Delete</a>
             <?php } ?>
         </div>
     </div>

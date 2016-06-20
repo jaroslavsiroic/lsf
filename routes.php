@@ -17,13 +17,8 @@
   }
 
   // we're adding an entry for the new controller and its actions
-<<<<<<< HEAD
-  $controllers = array('pages' => ['home', 'error', 'login', 'logout', 'register', 'ok', 'myprofile', 'category', 'about', 'contact'],
-                       'posts' => ['index', 'show', 'write', 'edit', 'delete']);
-=======
-  $controllers = array('pages' => ['home', 'error', 'login', 'logout', 'register', 'ok', 'myprofile', 'category', 'changeuser'],
+  $controllers = array('pages' => ['home', 'error', 'login', 'logout', 'register', 'ok', 'myprofile', 'category', 'changeuser', 'about', 'contact', 'userprofile'],
                        'posts' => ['index', 'show', 'write', 'edit', 'delete', 'updatecomment', 'deletecomment']);
->>>>>>> 22ad8f42300b37e6a6d021e800c7f1723ca968f6
 
   if (array_key_exists($controller, $controllers) && in_array($action, $controllers[$controller])) {
       call($controller, $action);

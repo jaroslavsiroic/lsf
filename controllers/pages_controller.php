@@ -46,26 +46,40 @@
       usort($posts, "cmp_post_date");
       require_once('views/pages/category.php');
     }
-<<<<<<< HEAD
 
     public function about() {
       require_once('views/pages/about.php');
     }
 
-        public function contact() {
+    public function contact() {
       require_once('views/pages/contact.php');
     }
 
 
-=======
     
-    public static function changeuser() {
+    public function changeuser() {
       if (!isset($_GET['change']))
         return call('pages', 'error');
       if ($_GET['change'] == 'name' || $_GET['change'] == 'surname' || $_GET['change'] == 'password')
         require_once('views/pages/changeUser.php');
       else return call('pages', 'error');
     }
->>>>>>> 22ad8f42300b37e6a6d021e800c7f1723ca968f6
+
+    public function userprofile() {
+      if (!isset($_GET['id']))
+        return call('pages', 'error');
+      require_once('models/post.php');
+      if ($_GET['id'] == $_SESSION['user']->id) {
+        $posts = Post::allById($_SESSION['user']->id);
+        usort($posts, "cmp_post_date");
+        require_once('views/pages/myprofile.php');
+      } else {
+        $posts = Post::allById($_GET['id']);
+        usort($posts, "cmp_post_date");
+        require_once('views/pages/userProfile.php');
+      }
+
+
+    }
   }
 ?>
