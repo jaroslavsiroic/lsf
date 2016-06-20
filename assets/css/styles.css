@@ -98,3 +98,68 @@ p {
 	max-width: 750px;
 }
 
+.profile-photo1, .profile-photo2, .profile-photo3, .profile-photo4{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    max-width: 150px;
+    margin: 0 auto 30px;
+    border-radius: 50%;
+}
+
+.profile-photo1{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    max-width: 150px;
+    margin: 0 auto 30px;
+    border-radius: 50%;
+}
+
+
+@media screen and (min-width: 480px){
+	.profile-photo1{
+		float:left;
+		margin: 0 5% 80px 0;
+	}
+}
+
+
+@media screen and (min-width: 480px){
+.profile-photo1	,.profile-photo2, .profile-photo3, .profile-photo4 {
+		float:left;
+		margin: 0 5% 0px 0;
+	}
+}
+
+#primary{
+    list-style-type: none;
+}
+
+#secondary{
+    list-style-type: none;
+}
+
+
+
+@media screen and (min-width: 480px){
+
+    /************************************
+    TWO COLUMN LAYOUT
+    ************************************/
+
+    #primary {
+        width: 50%;
+        float: left;
+    }
+
+    #secondary{
+        width: 40%;
+        float: right;
+    }
+
+    

@@ -46,5 +46,15 @@
       //posty zrobim pozniej. Poprobuj puki co tylko to zrobic
       require_once('views/pages/category.php');
     }
+
+    public function about() {
+      require_once('views/pages/about.php');
+    }
+
+        public function contact() {
+      require_once('views/pages/contact.php');
+    }
+
+
   }
 ?>

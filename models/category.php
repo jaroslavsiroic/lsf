@@ -22,5 +22,22 @@
 
 			return $list;
 	    }
+
+	    public static function find($id) {
+	    $db = Db::getInstance();
+      	require_once('models/category.php');
+     	// we make sure $id is an integer
+     	$id = intval($id);
+     	$req = $db->prepare('SELECT * FROM category WHERE id = :id');
+
+     	
+			foreach($req->fetchAll() as $cat) {
+				$list[] = new Category($cat['id'], $cat['title'], $cat['content']);
+			}
+
+			return $list;
+	    }
+
+
 	}
 ?>
