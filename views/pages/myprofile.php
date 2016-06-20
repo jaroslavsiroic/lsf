@@ -13,8 +13,6 @@
 </ul>
 <hr><h3>My posts</h3>
 <?php
-require_once('models/post.php');
-$posts = Post::allById($_SESSION['user']->id);
 foreach($posts as $post) { ?>
 <div class="media well">
     <div class="media-body">
@@ -23,6 +21,11 @@ foreach($posts as $post) { ?>
         </a>
         <h4 class="media-heading">
             <small>
+                <b>Category:</b>
+                <a href="?controller=pages&action=category&id=<?php echo $post->category->id; ?>" >
+                    <?php echo $post->category->title; ?>
+                </a>
+                <b>Posted on:</b>
                 <?php echo $post->date; ?>
             </small>
         </h4>

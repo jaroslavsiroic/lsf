@@ -1,10 +1,16 @@
 <?php
   class PagesController {
     public function home() {
+      require_once('models/post.php');
+      $posts = Post::all();
+      usort($posts, "cmp_post_date");
       require_once('views/pages/home.php');
     }
 
     public function myprofile() {
+      require_once('models/post.php');
+      $posts = Post::allById($_SESSION['user']->id);
+      usort($posts, "cmp_post_date");
       require_once('views/pages/myprofile.php');
     }
     

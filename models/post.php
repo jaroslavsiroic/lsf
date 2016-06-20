@@ -34,12 +34,13 @@
     public static function allById($id) { // all user posts
       $list = [];
       $id = intval($id);
+      require_once('models/category.php');
       $db = Db::getInstance();
-      $req = $db->query('SELECT * FROM post WHERE id_user = '.$id);
+      $req = $db->query('SELECT p.id as id, p.date as date, p.title as title, p.headline as headline, c.id as cat_id, c.title as cat_title FROM post p inner join category c WHERE p.id_category = c.id and id_user = '.$id);
       $req->execute(array('id' => $id));
       // we create a list of Post objects from the database results
       foreach($req->fetchAll() as $post) {
-        $list[] = new Post($post['id'], $post['date'], $post['title'], $post['headline'], 0, 0, 1);
+        $list[] = new Post($post['id'], $post['date'], $post['title'], $post['headline'], 0, 0, new Category($post['cat_id'],$post['cat_title'],0));
       }
       return $list;
     }
