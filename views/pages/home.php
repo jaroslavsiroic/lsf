@@ -7,7 +7,7 @@
     if ($_SESSION['user']->isLoggedIn()) {
         echo '<a style="width: 98%; magrin: auto; height: 50px; margin: 10px" href="?controller=posts&action=write" type="button" class="btn btn-success"><font size="6">Write new Post!</font></a>';
     }
-    echo "<hr><p>List of all posts:</p>";
+    echo "<hr><h4>List of all recent posts:</h4>";
     foreach($posts as $post) { 
     ?>
     <div class="media">

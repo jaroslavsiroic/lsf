@@ -15,6 +15,7 @@
       // we use the given id to get the right post
       $post = Post::find($_GET['id']);
       $coms = Comment::all($_GET['id']);
+      usort($coms, "cmp_post_date");
       require_once('views/posts/show.php');
     }
 

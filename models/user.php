@@ -20,7 +20,7 @@
 
 		public function login($username, $password) {
 			$username = validate($username);
-			$password = validate($password);	
+			$password = validate($password);
 
 			$db = Db::getInstance();
 			// we make sure $id is an integer
@@ -44,7 +44,6 @@
 		}
 
 		public function register($username, $name, $surname, $password) {
-			//TODO register to data base and return true or false
 			$username = validate($username);
 			$surname = validate($surname);
 			$name = validate($name);
@@ -59,8 +58,21 @@
 			    echo '<p class="error">Username is already in use!</p>';
 			}
 		}
-		public function savePost($post) {
-			
+		public function change($change, $changeValue, $pass) {
+			$db = Db::getInstance();
+			// we make sure $id is an integer
+			$req = $db->prepare('SELECT * FROM user WHERE username = :username and password = :pass');
+			$req->execute(array('username' => $this->username, 'pass' => $pass));
+
+			$result = $req->fetch();
+
+			if ($result['username'] != "" && $result['username'] == $this->username) {
+				$req = $db->prepare("UPDATE user SET {$change}=:changeV WHERE id =:id");
+
+				$req->execute(array('changeV' => $changeValue, 'id' => $this->id));
+				if ($change == 'name' || $change == 'surname') $this->{$change} = $changeValue;
+				return true;
+			} else return false;
 		}
 	}
 ?>

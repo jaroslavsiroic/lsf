@@ -7,9 +7,9 @@
 <h3>Name: <?php echo $_SESSION['user']->name ?></h3>
 <h3>Surname: <?php echo $_SESSION['user']->surname ?></h3>
 <ul class="list-inline">
-    <li><a style="margin-top: 10px" href="?controller=posts&action=edit" type="button" class="btn btn-success">Change Name</a></li>
-    <li><a style="margin-top: 10px" href="?controller=posts&action=edit" type="button" class="btn btn-success">Change Surname</a></li>
-    <li><a style="margin-top: 10px" href="?controller=posts&action=edit" type="button" class="btn btn-success">Change Password</a></li>
+    <li><a style="margin-top: 10px" href="?controller=pages&action=changeuser&change=name" type="button" class="btn btn-success">Change Name</a></li>
+    <li><a style="margin-top: 10px" href="?controller=pages&action=changeuser&change=surname" type="button" class="btn btn-success">Change Surname</a></li>
+    <li><a style="margin-top: 10px" href="?controller=pages&action=changeuser&change=password" type="button" class="btn btn-success">Change Password</a></li>
 </ul>
 <hr><h3>My posts</h3>
 <?php
