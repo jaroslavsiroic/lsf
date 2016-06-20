@@ -74,6 +74,7 @@
         usort($posts, "cmp_post_date");
         require_once('views/pages/myprofile.php');
       } else {
+        $user = User::find($_GET['id']);
         $posts = Post::allById($_GET['id']);
         usort($posts, "cmp_post_date");
         require_once('views/pages/userProfile.php');

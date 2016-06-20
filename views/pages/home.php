@@ -18,7 +18,7 @@
             <a href="?controller=posts&action=show&id=<?php echo $post->id; ?>" >
                 <h3 class="media-heading"> <?php echo $post->title;  ?> </h3>
             </a>
-            <h4 class="media-heading">Author: <a href="?controller=pages&action=user&id=<?php echo $post->author->id; ?>" ><?php echo $post->author->name.' '.$post->author->surname; ?></a>
+            <h4 class="media-heading">Author: <a href="?controller=pages&action=userprofile&id=<?php echo $post->author->id; ?>" ><?php echo $post->author->name.' '.$post->author->surname; ?></a>
                 <small>
                     <?php echo $post->date; ?>
                     </br>

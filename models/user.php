@@ -74,5 +74,16 @@
 				return true;
 			} else return false;
 		}
+
+		public static function find($id) {
+			$db = Db::getInstance();
+			// we make sure $id is an integer
+			$id = intval($id);
+			$req = $db->prepare('SELECT * FROM user WHERE id = :id');
+			// the query was prepared, now we replace :id with our actual $id value
+			$req->execute(array('id' => $id));
+			$post = $req->fetch();
+			return new User($post['id'],$post['username'],$post['name'],$post['surname']);
+		}
 	}
 ?>
