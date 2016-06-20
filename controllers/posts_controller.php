@@ -15,6 +15,7 @@
       // we use the given id to get the right post
       $post = Post::find($_GET['id']);
       $coms = Comment::all($_GET['id']);
+      usort($coms, "cmp_post_date");
       require_once('views/posts/show.php');
     }
 
@@ -36,11 +37,27 @@
     }
 
     public function delete() {
-      if (!isset($_GET['id']))
+      if (!isset($_GET['id']) || !isset($_GET['postid']))
         return call('pages', 'error');
       require_once('models/post.php');
       Post::delete($_GET['id']);
       header('Location: ?controller=pages&action=myprofile');
+    }
+
+    public function deletecomment() {
+      if (!isset($_GET['id']))
+        return call('pages', 'error');
+      require_once('models/comment.php');
+      Comment::delete($_GET['id']);
+      header('Location: ?controller=posts&action=show&id='.$_GET['postid']);
+    }
+
+    public function updatecomment() {
+      if (!isset($_GET['id']) || !isset($_GET['postid']))
+        return call('pages', 'error');
+      require_once('models/comment.php');
+      $com = Comment::find($_GET['id']);
+      require_once('views/posts/updateComment.php');
     }
   }
 ?>

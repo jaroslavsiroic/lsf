@@ -45,6 +45,20 @@
       return $list;
     }
 
+    public static function allByCategory($cat) { // all user posts
+      $list = [];
+      $cat = intval($cat);
+      require_once('models/category.php');
+      $db = Db::getInstance();
+      $req = $db->query('SELECT p.id as id, p.date as date, p.title as title, p.headline as headline, u.id as id_user, u.name as name, u.surname as surname, c.id as cat_id, c.title as cat_title FROM post p inner join user u inner join category c where u.id = p.id_user and p.id_category = c.id and c.id = '.$cat);
+      $req->execute(array('cat' => $cat));
+      // we create a list of Post objects from the database results
+      foreach($req->fetchAll() as $post) {
+        $list[] = new Post($post['id'], $post['date'], $post['title'], $post['headline'], 0, new User($post['id_user'], 0, $post['name'], $post['surname']), new Category($post['cat_id'],$post['cat_title'],0));
+      }
+      return $list;
+    }
+
     public static function find($id) {
       $db = Db::getInstance();
       require_once('models/category.php');

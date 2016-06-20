@@ -23,7 +23,6 @@
   function cmp_post_date($a, $b) {
     return strcmp($b->date, $a->date);
   }
-
   require_once('models/user.php');
   session_start();
   if(!isset($_SESSION['user'])) $_SESSION['user'] = new User(null, null, null, null);

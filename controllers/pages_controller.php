@@ -40,12 +40,13 @@
         return call('pages', 'error');
       require_once('models/category.php');
       $category = Category::all();
-      //$cat = Category::find($_GET['id']);
-      //masz stworzyc metode find w klasie Category :)
-      //i uzhywac ten $cat jako objekt kategorii, wyswietlac opis, nazwe, oraz posty z tej kategorii
-      //posty zrobim pozniej. Poprobuj puki co tylko to zrobic
+      require_once('models/post.php');
+      $cat = Category::find($_GET['id']);
+      $posts = Post::allByCategory($_GET['id']);
+      usort($posts, "cmp_post_date");
       require_once('views/pages/category.php');
     }
+<<<<<<< HEAD
 
     public function about() {
       require_once('views/pages/about.php');
@@ -56,5 +57,15 @@
     }
 
 
+=======
+    
+    public static function changeuser() {
+      if (!isset($_GET['change']))
+        return call('pages', 'error');
+      if ($_GET['change'] == 'name' || $_GET['change'] == 'surname' || $_GET['change'] == 'password')
+        require_once('views/pages/changeUser.php');
+      else return call('pages', 'error');
+    }
+>>>>>>> 22ad8f42300b37e6a6d021e800c7f1723ca968f6
   }
 ?>

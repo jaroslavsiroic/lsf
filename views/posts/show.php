@@ -68,7 +68,7 @@
 
     <!-- Comment -->
     <?php foreach($coms as $com) { ?>
-    <div class="media">
+    <div class="media well">
         <a class="pull-left" href="#">
             <img style="max-width: 64px; max-height: 64px" class="media-object" src="assets/img/user256.png" alt="">
         </a>
@@ -76,7 +76,12 @@
             <h4 class="media-heading"> <?php echo $com->user->name.' '.$com->user->surname; ?>
                 <small><?php echo $com->date; ?></small>
             </h4>
-            <?php echo $com->content; ?>
+            
+            <?php echo $com->content; if ($_SESSION['user']->id == $com->user->id){?>
+                <a href="?controller=posts&action=updatecomment&id=<?php echo $com->id; ?>&postid=<?php echo $post->id; ?>" type="button" class="btn btn-success">Edit</a>
+            <?php } if ($_SESSION['user']->id == $com->user || $_SESSION['user']->id == $post->author->id){?>
+            <a href="?controller=posts&action=deletecomment&id=<?php echo $com->id; ?>&postid=<?php echo $post->id; ?>" type="button" class="btn btn-danger">Delete</a>
+            <?php } ?>
         </div>
     </div>
     <?php } ?>
