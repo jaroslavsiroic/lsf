@@ -85,5 +85,17 @@
 			$post = $req->fetch();
 			return new User($post['id'],$post['username'],$post['name'],$post['surname']);
 		}
+
+		public static function all() {
+			$list = [];
+			$db = Db::getInstance();
+			$req = $db->query('SELECT * FROM user');
+
+			// we create a list of Post objects from the database results
+			foreach($req->fetchAll() as $post) {
+				$list[] = new User($post['id'],$post['username'],$post['name'],$post['surname']);
+			}
+			return $list;
+		}
 	}
 ?>

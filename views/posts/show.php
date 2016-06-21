@@ -73,7 +73,7 @@
             <img style="max-width: 64px; max-height: 64px" class="media-object" src="assets/img/user256.png" alt="">
         </a>
         <div class="media-body">
-            <h4 class="media-heading"> <?php echo $com->user->name.' '.$com->user->surname; ?>
+            <h4 class="media-heading"><a href="?controller=pages&action=userprofile&id=<?php echo $com->user->id; ?>"> <?php echo $com->user->name.' '.$com->user->surname; ?></a>
                 <small><?php echo $com->date; ?></small>
             </h4>
 

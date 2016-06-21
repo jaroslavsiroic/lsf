@@ -56,9 +56,9 @@
           <!-- ^$header -->
           <?php if (!$_SESSION['user']->isLoggedIn()){ ?>
             <ul class="nav navbar-nav">
-              <li><a href="#">Posts</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Contact Developer</a></li>
+              <li><a href="?controller=pages&action=allusers">View all users</a></li>
+              <li><a href="?controller=pages&action=about">About</a></li>
+              <li><a href="?controller=pages&action=contact">Contact Developer</a></li>
             </ul>
             <div class="header-buttons">
                 <a href="?controller=pages&action=login" type="button" class="btn btn-default">Login</a>
@@ -67,9 +67,9 @@
           <?php } else { ?>
             <ul class="nav navbar-nav">
               <li><a href="?controller=pages&action=myprofile">My profile</a></li>
-              <li><a href="?controller=pages&action=contact">Contact Developer</a></li>
-              <li><a href="#">View all users</a></li>
+              <li><a href="?controller=pages&action=allusers">View all users</a></li>
               <li><a href="?controller=pages&action=about">About</a></li>
+              <li><a href="?controller=pages&action=contact">Contact Developer</a></li>
             </ul>
             <div class="header-buttons">
                 <p class="header-text">Logged in as <?php echo $_SESSION['user']->name." ".$_SESSION['user']->surname ?></p>

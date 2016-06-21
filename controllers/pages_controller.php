@@ -55,7 +55,10 @@
       require_once('views/pages/contact.php');
     }
 
-
+    public function allusers() {
+      $users = User::all();
+      require_once('views/pages/allUsers.php');
+    }
     
     public function changeuser() {
       if (!isset($_GET['change']))
@@ -79,8 +82,6 @@
         usort($posts, "cmp_post_date");
         require_once('views/pages/userProfile.php');
       }
-
-
     }
   }
 ?>
